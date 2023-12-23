@@ -1,15 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
 import reportWebVitals from './reportWebVitals';
+
+import FondFlexApp from './FondflexApp';
+
+import './index.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
-    <App />
+    <GoogleOAuthProvider
+      clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID || '877443647291-e45pqmbefflgqqa124fegsvb76s11u03.apps.googleusercontent.com'}
+    > 
+      <FondFlexApp />
+    </GoogleOAuthProvider>
   </React.StrictMode>
 );
 

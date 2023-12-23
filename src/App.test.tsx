@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import FondFlexApp from './FondflexApp';
 
 test('renders learn react link', () => {
-  render(<App />);
+  render(<FondFlexApp />);
   const linkElement = screen.getByText(/learn react/i);
   expect(linkElement).toBeInTheDocument();
 });
