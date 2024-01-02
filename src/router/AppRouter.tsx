@@ -4,11 +4,11 @@ import LoginPage from '../auth/pages/LoginPage';
 
 // import DashboardPage from index.tsx
 import{ DashboardPage }from '../dashboard';
-import Principal from '../landing/Principal';
+import Principal from '../landing/Main/components/Principal';
 
 
 const AppRouter = () => {
-    
+
     const authStatus: string  = 'not-authenticated';
     
     useEffect(() => {
@@ -30,18 +30,18 @@ const AppRouter = () => {
                 (authStatus !== 'authenticated')
                 ? (
                     <>
-                        <Route path="/auth/*" element={<Principal/>}/>
-                        <Route path="/*" element={<Navigate to="/auth/login" />}/>
+                        <Route path="*" element={<Principal/>}/>
+                        {/* <Route path="/*" element={<Navigate to="/" />}/> */}
                     </>
                 )
                 : (
                     <>
                         <Route path="/" element={<DashboardPage/>}/>
-                        <Route path="/*" element={<Navigate to="/" />}/>
+                        {/* <Route path="/*" element={<Navigate to="/" />}/> */}
                     </>
                 )
             }
-            <Route path="/*" element={<Navigate to="/auth/login" />}/>
+            {/* <Route path="/*" element={<Navigate to="/auth/login" />}/> */}
         </Routes>
     )
 }
