@@ -70,12 +70,12 @@ export const Navbar = () => {
           </div>
           {/* Action Buttons */}
           <div className="hidden md:flex items-center">
-            <a
-              href="#"
+            <Link
+              to="/login"
               className="bg-[#f6f0f0] text-accent hover:bg-accent  transition-colors duration-100 hover:text-white px-3 py-2 rounded-full text-sm font-medium"
             >
               Ingresar
-            </a>
+            </Link>
             <a
               href="#"
               className="ml-2 bg-accent text-white hover:bg-accent transition-colors duration-100 hover:text-white px-3 py-2 rounded-full text-sm font-medium"

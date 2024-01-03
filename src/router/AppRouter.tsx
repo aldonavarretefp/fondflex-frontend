@@ -2,9 +2,10 @@ import React, { useEffect } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import LoginPage from '../auth/pages/LoginPage';
 
-// import DashboardPage from index.tsx
-import{ DashboardPage }from '../dashboard';
+
+import { DashboardPage } from '../dashboard';
 import Principal from '../landing/Main/components/Principal';
+import RegistrationFlow from '../landing/Registration/RegistrationFlow';
 
 
 const AppRouter = () => {
@@ -27,17 +28,19 @@ const AppRouter = () => {
     return (
         <Routes>
             {
-                (authStatus !== 'authenticated')
+                (authStatus === 'authenticated')
                 ? (
                     <>
-                        <Route path="*" element={<Principal/>}/>
+                        <Route path="*" element={<DashboardPage/>}/>
                         {/* <Route path="/*" element={<Navigate to="/" />}/> */}
                     </>
                 )
                 : (
                     <>
-                        <Route path="/" element={<DashboardPage/>}/>
+                        <Route path="*" element={<Principal/>}/>
                         {/* <Route path="/*" element={<Navigate to="/" />}/> */}
+                        <Route path="/login" element={<LoginPage/>}/>
+                        <Route path="/register" element={<RegistrationFlow/>}/>
                     </>
                 )
             }
