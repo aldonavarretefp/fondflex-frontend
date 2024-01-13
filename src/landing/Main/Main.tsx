@@ -8,7 +8,7 @@ import Footer from './components/Footer'
 
 const Main = () => {
   return (
-    <div>
+    <>
         {/* Sections */}
       <HeroSection />
       <OurMissionSection />
@@ -16,7 +16,7 @@ const Main = () => {
       <ValidationSection />
       <QuestionsSection />
       <Footer/>
-    </div>
+    </>
   )
 }
 

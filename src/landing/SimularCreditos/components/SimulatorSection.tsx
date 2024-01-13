@@ -2,12 +2,12 @@ import React from "react";
 
 const SimulatorSection = () => {
   return (
-    <div className="pt-[98px] snap-start w-full h-screen bg-background flex justify-center items-center">
-      <div className="w-1/2 h-full bg-white flex flex-col justify-center items-center p-28">
-        <h1 className="text-6xl font-bold mb-6">
+    <div className="pt-[98px] snap-start w-full h-screen bg-background flex justify-center items-center md:flex-row flex-col overflow-scroll">
+      <div className="w-full md:w-1/2 h-full flex flex-col justify-center items-center p-12 md:p-28">
+        <h1 className="text-lg md:text-6xl font-bold md:mb-6">
           Simulador de créditos FondFlex
         </h1>
-        <div className="flex flex-col gap-5 text-justify">
+        <div className="flex flex-col gap-2 md:gap-5 text-justify text-xs md:text-normal">
           <p>
             En FondFlex, los sueños toman forma y las oportunidades cobran vida.
             Explora un espectro de tasas que se despliegan desde un atractivo
@@ -26,11 +26,11 @@ const SimulatorSection = () => {
           </p>
         </div>
       </div>
-      <div className="w-1/2 h-full bg-white flex flex-col justify-center items-center">
-        <h1 className="text-6xl font-bold mb-6">Tu ahorro posible en Fondflex</h1>
+      <div className="w-full md:w-1/2 h-full flex flex-col justify-center items-center p-3">
+        <h1 className="text-6xl font-bold mb-6 hidden md:block">Tu ahorro posible en Fondflex</h1>
         <h1 className="text-xl font-bold mb-2">Tasas de interés</h1>
-        <div className="w-full p-6">
-          <table className="table-auto">
+        <div className="w-full md:p-6">
+          <table className="table-fixed w-full [&>*]:text-xs">
             <thead>
               <tr className="bg-gray-100">
                 <th className="border px-4 py-2"></th>

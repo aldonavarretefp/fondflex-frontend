@@ -1,5 +1,6 @@
 import React from 'react'
 import SimulatorSection from './components/SimulatorSection'
+import RequirementsSection from './components/RequirementsSection'
 
 
 const SimulateCredits = () => {
@@ -7,6 +8,7 @@ const SimulateCredits = () => {
     <div>
         {/* Sections */}
       <SimulatorSection />
+      <RequirementsSection />
     </div>
   )
 }

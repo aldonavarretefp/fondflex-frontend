@@ -36,7 +36,7 @@ export const Navbar = () => {
         <div
           className={`${
             isMobileMenuOpen ? "block" : "hidden"
-          } w-full flex-grow md:flex md:items-center md:w-auto md:mx-auto`}
+          } w-full flex-grow md:flex md:items-center md:w-auto justify-between md:mx-auto`}
         >
           <div className="text-sm lg:flex-grow">
             {/* Navigation Links */}
@@ -76,12 +76,12 @@ export const Navbar = () => {
             >
               Ingresar
             </Link>
-            <a
-              href="#"
+            <Link
+              to="/register"
               className="ml-2 bg-accent text-white hover:bg-accent transition-colors duration-100 hover:text-white px-3 py-2 rounded-full text-sm font-medium"
             >
               Regístrate
-            </a>
+            </Link>
           </div>
         </div>
       </nav>
