@@ -3,8 +3,8 @@ import React from "react";
 const SimulatorSection = () => {
   return (
     <div className="pt-[98px] snap-start w-full h-screen bg-background flex justify-center items-center md:flex-row flex-col overflow-scroll">
-      <div className="w-full md:w-1/2 h-full flex flex-col justify-center items-center p-12 md:p-28">
-        <h1 className="text-lg md:text-6xl font-bold md:mb-6">
+      <div className="w-full md:w-1/2 h-full flex flex-col justify-center items-center p-6 md:p-28 gap-3">
+        <h1 className="text-lg md:text-5xl font-bold md:mb-6">
           Simulador de créditos FondFlex
         </h1>
         <div className="flex flex-col gap-2 md:gap-5 text-justify text-xs md:text-normal">
@@ -27,7 +27,7 @@ const SimulatorSection = () => {
         </div>
       </div>
       <div className="w-full md:w-1/2 h-full flex flex-col justify-center items-center p-3">
-        <h1 className="text-6xl font-bold mb-6 hidden md:block">Tu ahorro posible en Fondflex</h1>
+        <h1 className="text-lg font-bold mb-6 hidden md:block">Tu ahorro posible en Fondflex</h1>
         <h1 className="text-xl font-bold mb-2">Tasas de interés</h1>
         <div className="w-full md:p-6">
           <table className="table-fixed w-full [&>*]:text-xs">

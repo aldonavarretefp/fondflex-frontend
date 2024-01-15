@@ -9,6 +9,8 @@ module.exports = {
       colors: {
         'accent': '#FF5F00',
         'background': '#F8F8F8',
+        'gradient-left': '#E914FB',
+        'gradient-right': '#D85600',
       }
     },
   },
