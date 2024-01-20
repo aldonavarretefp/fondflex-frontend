@@ -16,10 +16,6 @@ export const useForm = <T extends Object>(
   >({});
 
   useEffect(() => {
-    createValidators();
-  }, [formState]);
-
-  useEffect(() => {
     setFormState(initialForm);
   }, [initialForm]);
 
@@ -42,23 +38,6 @@ export const useForm = <T extends Object>(
 
   const onResetForm = () => {
     setFormState(initialForm);
-  };
-
-  const createValidators = () => {
-    const formCheckedValues: Record<string, string | null> = {};
-
-    for (const formField in formValidations) {
-        const [validator, errorMessage] = formValidations[formField]!;
-        const formValue = formState[formField];
-    
-        if (validator(formValue)) {
-            formCheckedValues[formField] = null;
-        } else {
-            formCheckedValues[formField] = errorMessage;
-        }
-    }
-
-    setFormValidation(formCheckedValues);
   };
 
   return {

@@ -1,11 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-
 import reportWebVitals from './reportWebVitals';
-
 import FondFlexApp from './FondflexApp';
-
 import './index.css';
 
 const root = ReactDOM.createRoot(

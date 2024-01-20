@@ -11,9 +11,11 @@ export const Navbar = () => {
         <div className="flex flex-row items-center justify-between w-full md:w-5">
           <div className="flex items-center flex-shrink-0 text-white mr-6">
             {/* Logo */}
-            <div className="flex-shrink-0">
-              <img src={logoImg} alt="Fondflex" />
-            </div>
+            <Link to="/">
+              <div className="flex-shrink-0">
+                <img src={logoImg} alt="Fondflex" />
+              </div>
+            </Link>
           </div>
           {/* Hamburger Menu */}
           <div className="block md:hidden">
@@ -46,22 +48,27 @@ export const Navbar = () => {
               }`}
             >
               <div className="flex flex-col mt-4 md:flex-row md:mt-0 md:ml-10 md:items-baseline">
-                <Link
+                <NavLink
                   to="/"
-                  className="text-accent hover:bg-accent rounded-r-lg transition-colors duration-100 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  className={({ isActive }) => ` ${isActive ? "underline" : "text-blue"} mt-1 text-accent  hover:bg-accent rounded-r-lg transition-colors duration-100 hover:text-white block px-3 py-2 rounded-md text-base font-medium md:mt-0 md:ml-4` }
                 >
                   Pagina principal
-                </Link>
-                <Link to="/simular-creditos"
-                  className="mt-1 text-accent hover:bg-accent rounded-r-lg transition-colors duration-100 hover:text-white block px-3 py-2 rounded-md text-base font-medium md:mt-0 md:ml-4"
+                </NavLink>
+                <NavLink
+                  to="/simular-inversiones"
+                  className={({ isActive }) => ` ${isActive ? "underline" : "text-blue"} mt-1 text-accent  hover:bg-accent rounded-r-lg transition-colors duration-100 hover:text-white block px-3 py-2 rounded-md text-base font-medium md:mt-0 md:ml-4` }
+                >
+                  Simular inversiones
+                </NavLink>
+                <NavLink to="/simular-creditos"
+                  className={({ isActive }) => ` ${isActive ? "underline" : "text-blue"} mt-1 text-accent  hover:bg-accent rounded-r-lg transition-colors duration-100 hover:text-white block px-3 py-2 rounded-md text-base font-medium md:mt-0 md:ml-4` }
                   >
                   Simular créditos
-                  </Link>
+                  </NavLink>
                   
                 <NavLink
                   to="/elimina-tu-deuda"
                   className={({ isActive }) => ` ${isActive ? "underline" : "text-blue"} mt-1 text-accent  hover:bg-accent rounded-r-lg transition-colors duration-100 hover:text-white block px-3 py-2 rounded-md text-base font-medium md:mt-0 md:ml-4` }
-                  // className={`${(isActive:) => {} } mt-1 text-accent hover:bg-accent rounded-r-lg transition-colors duration-100 hover:text-white block px-3 py-2 rounded-md text-base font-medium md:mt-0 md:ml-4`}
                 >
                   Elimina tu deuda
                 </NavLink>
@@ -72,7 +79,7 @@ export const Navbar = () => {
           <div className="hidden md:flex items-center">
             <Link
               to="/login"
-              className="bg-[#f6f0f0] text-accent hover:bg-accent  transition-colors duration-100 hover:text-white px-3 py-2 rounded-full text-sm font-medium"
+              className="bg-[#f6f0f0] text-accent transition-colors duration-100 px-3 py-2 rounded-full text-sm font-medium"
             >
               Ingresar
             </Link>
