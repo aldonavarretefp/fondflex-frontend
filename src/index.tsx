@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <GoogleOAuthProvider
-      clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID || '877443647291-e45pqmbefflgqqa124fegsvb76s11u03.apps.googleusercontent.com'}
+      clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID as string}
     > 
       <FondFlexApp />
     </GoogleOAuthProvider>
