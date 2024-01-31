@@ -15,10 +15,13 @@ export const authSlice:Slice = createSlice({
         },
         onChecking: (state: any) => {
             state.status = 'checking';
+            
         },
         onLogout: (state) => {
             state.user = {};
-            state.status = 'not-authenticated'
+
+            state.status = 'not-authenticated';
+
             state.errorMessage = undefined;
         },
         onClearErrorMessage: (state) => {
