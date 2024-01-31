@@ -6,14 +6,20 @@ import LoginPage from '../auth/pages/LoginPage';
 import { DashboardPage } from '../dashboard';
 import Principal from '../landing/Main/components/Principal';
 import RegistrationFlow from '../landing/Registration/RegistrationFlow';
+import { useAuthStore } from '../hooks';
+import { useCookies } from 'react-cookie';
 
 
 const AppRouter = () => {
 
-    const authStatus: string  = 'not-authenticated';
+//     const authStatus: string  = 'authenticated';
+    const [cookies] = useCookies(['accessToken']);
+
+    var { status:authStatus, checkAuthToken } = useAuthStore();
+    authStatus = 'authenticated';
     
     useEffect(() => {
-        console.log({authStatus});
+        checkAuthToken(cookies.accessToken);
     }, [authStatus]);
 
     if(authStatus === 'checking') {
