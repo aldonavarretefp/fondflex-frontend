@@ -81,7 +81,7 @@ const Sidebar = () => {
         {sidebarLinks.map((link, index) => (
           <div
             key={index}
-            className={`${selectedItem === index ? "bg-accent text-white" : "hover:bg-gray-300"} mt-4 cursor-pointer flex flex-row items-center h-12 w-full ${isSideBarExpanded ? "px-4 justify-start" : "justify-center"} rounded transition-colors duration-100`}
+            className={`${selectedItem === index ? "bg-accent/50" : "hover:bg-gray-300"} mt-4 cursor-pointer flex flex-row items-center h-12 w-full ${isSideBarExpanded ? "px-4 justify-start" : "justify-center"} rounded transition-colors duration-100`}
             onClick={() => setSelectedItem(index)}
           >
               <FontAwesomeIcon icon={link.icon} className={`${isSideBarExpanded ? "pr-2" : ""}`} size="1x" />
