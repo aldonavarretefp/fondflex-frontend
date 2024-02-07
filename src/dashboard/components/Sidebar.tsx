@@ -55,7 +55,7 @@ const sidebarLinks: Array<SidebarLink> = [
   },
 ];
 
-const Sidebar = () => {
+export const Sidebar = () => {
 
   const [isSideBarExpanded, setIsSideBarExpanded] = useState(false);
   const [selectedItem, setSelectedItem] = useState(0);
@@ -96,5 +96,3 @@ const Sidebar = () => {
     </div>
   );
 };
-
-export default Sidebar;

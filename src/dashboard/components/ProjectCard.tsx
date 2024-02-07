@@ -7,7 +7,7 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
-    <div className="bg-white flex flex-col w-full p-6 rounded-md gap-3">
+    <div className="bg-white shadow-md flex flex-col w-full p-6 rounded-md gap-3 cursor-pointer hover:bg-gray-200 transition-colors duration-100">
       <div className="w-full ">
         <span className="bg-project rounded p-2 text-xs">{project.type}</span>
       </div>
