@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import RoleChoosing from './RoleChoosing';
 import { useForm } from '../../hooks';
 import BasicInfoForm from './BasicInfoForm';
+import PhoneVerificationForm from './PhoneVerificationForm';
+import { IdentityUploadForm } from './IdentityUploadForm';
 
 interface RegistrationCarouselProps {
   nextStep: () => void;
@@ -18,7 +20,6 @@ const initialFormData = {
   phone: "",
   role: "",
   termsAndConditions: false,
-
 };
 
 const RegistrationCarousel: React.FC<RegistrationCarouselProps> = ({ currentStep, nextStep }) => {
@@ -46,6 +47,18 @@ const RegistrationCarousel: React.FC<RegistrationCarouselProps> = ({ currentStep
         />
       );
     // ...case for other steps
+    case 3:
+      return(
+        <IdentityUploadForm 
+
+        />
+      );
+    case 4:
+      return(
+        <PhoneVerificationForm 
+          nextStep={nextStep}
+        />
+      );
     default:
       return <div>Registration Complete</div>;
   }

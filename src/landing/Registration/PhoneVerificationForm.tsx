@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import PhoneInput from "react-phone-number-input/input";
+
 
 interface PhoneVerificationFormProps {
   nextStep: () => void;
@@ -13,16 +13,21 @@ const PhoneVerificationForm:React.FC<PhoneVerificationFormProps> = ({ nextStep }
   };
   const verifyOTP = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const response = await axios.post("http://localhost:8080" + "/api/v1/otp/verify", {
+    try {
+      const response = await axios.post("http://localhost:8080" + "/api/v1/otp/verify", {
         phone: "+393762109325",
         otp: "123456",
-    });
-    console.log(response);
-    nextStep();
+      });
+      console.log(response);
+      nextStep();
+    } catch (error) {
+      console.log(error);
+    }
+    
   }
   return (
-    <div className="flex flex-col bg-white w-1/2 p-8 justify-center items-center rounded shadow-md gap-6">
-      <form onSubmit={verifyOTP}>
+    <div className="w-full h-full flex justify-center items-center">
+      <form onSubmit={verifyOTP} className="flex flex-col bg-white w-1/2 p-8 justify-center items-center rounded shadow-md gap-6">
           <h1 className="text-2xl font-bold">Verificación de Teléfono</h1>
           <p>
             Hemos enviado un código de verificación a tu número de teléfono.

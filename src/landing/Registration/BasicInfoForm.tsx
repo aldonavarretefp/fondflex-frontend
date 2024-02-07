@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "../../hooks";
-import { on } from "events";
+
+import PhoneInput from "react-phone-input-2";
+import 'react-phone-input-2/lib/style.css'
+
 
 interface BasicInfoFormProps {
     nextStep: Function;
@@ -19,30 +22,24 @@ const initialFormData: Record<string, string> = {
 
 const BasicInfoForm: React.FC<BasicInfoFormProps> = ({nextStep,  setFormState, formState}) => {
   
-  const { email, firstName, middleName, fatherLastName, motherLastName, onInputChange } = useForm(initialFormData);
+  const { formState:formaActual, email, firstName, middleName, fatherLastName, motherLastName, onInputChange } = useForm(initialFormData);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormState({
-      ...formState,
-      email,
-      firstName,
-      middleName,
-      fatherLastName,
-      motherLastName,
-    });
-    console.log({
-      ...formState,
-      email,
-      firstName,
-      middleName,
-      fatherLastName,
-      motherLastName,
-    })
+    setFormState((prevState:any) => ({
+      ...prevState, // Preserve existing global state
+      ...formaActual, // Update with local state
+      phone: phoneNumber.phone // Ensure phone number is included
+    }));
     console.log(formState);
     nextStep();
   };
 
+  const handlePhoneChange = (value: string, data: any) => {
+    setPhoneNumber({ phone: value });
+  }
+
+  const [phoneNumber, setPhoneNumber] = useState({ phone: "" });
   return (
     <div className="bg-white md:w-[calc(50vw)] sm:w-1/2 rounded-md shadow">
       <form
@@ -115,6 +112,29 @@ const BasicInfoForm: React.FC<BasicInfoFormProps> = ({nextStep,  setFormState, f
             />
           </div>
         </div>
+
+        <PhoneInput
+          country={'mx'}
+          value={phoneNumber.phone}
+          inputProps={{
+            name: 'phone',
+            required: true,
+            autoFocus: true,
+          }}
+          placeholder="+52 (55) 4156-7890"
+          countryCodeEditable={false}
+          onlyCountries={['mx']}
+          inputStyle={{
+            width: "100%",
+            borderRadius: "0.25rem",
+            border: "1px solid #d1d5db",
+            fontSize: "1rem",
+            height: "2.5rem",
+          }}
+          masks={{mx: '(..) ....-....'}}
+          enableAreaCodeStretch
+          onChange={handlePhoneChange}
+        />
         <button
           className="w-full bg-accent rounded-md text-white p-2 mt-4 text-sm font-bold"
           type="submit"
