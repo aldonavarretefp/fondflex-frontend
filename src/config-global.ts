@@ -1,0 +1,1 @@
+export const NOT_AVAILABLE_SECTION_MESSAGE = "Apreciamos tu interés en explorar Fondflex. Actualmente, esta sección está en desarrollo, trabajando diligentemente para enriquecer tu experiencia. Pronto estará disponible para su uso. ¡Gracias por tu comprensión!";

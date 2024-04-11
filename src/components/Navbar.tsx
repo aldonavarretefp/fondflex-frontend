@@ -2,9 +2,12 @@ import { useState } from "react";
 import logoImg from "./../img/FondflexLogo50x50.png";
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import { usePopUp } from "../hooks";
+import { NOT_AVAILABLE_SECTION_MESSAGE } from "../config-global";
 
 export const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const { showPopUp } = usePopUp();
   
     return (
       <nav className="fixed w-full flex items-center flex-col md:flex-row justify-between bg-white p-6">
@@ -54,29 +57,42 @@ export const Navbar = () => {
                 >
                   Pagina principal
                 </NavLink>
-                <NavLink
+                {/* //TODO: Trabajar en la sección de Simular Inversiones. */}
+                {/* <NavLink
                   to="/simular-inversiones"
                   className={({ isActive }) => ` ${isActive ? "underline" : "text-blue"} mt-1 text-accent  hover:bg-accent rounded-r-lg transition-colors duration-100 hover:text-white block px-3 py-2 rounded-md text-base font-medium md:mt-0 md:ml-4` }
                 >
                   Simular inversiones
-                </NavLink>
+                </NavLink> */}
+                <div
+                  className="cursor-pointer text-blue mt-1 text-accent  hover:bg-accent rounded-r-lg transition-colors duration-100 hover:text-white block px-3 py-2 rounded-md text-base font-medium md:mt-0 md:ml-4"
+                  onClick={() => showPopUp(NOT_AVAILABLE_SECTION_MESSAGE)}
+                >
+                  Simular inversiones
+                </div>
                 <NavLink to="/simular-creditos"
                   className={({ isActive }) => ` ${isActive ? "underline" : "text-blue"} mt-1 text-accent  hover:bg-accent rounded-r-lg transition-colors duration-100 hover:text-white block px-3 py-2 rounded-md text-base font-medium md:mt-0 md:ml-4` }
                   >
                   Simular créditos
                   </NavLink>
-                  
-                <NavLink
+                {/* //TODO: Trabajar en la sección de Elimina tu deuda. */}
+                {/* <NavLink
                   to="/elimina-tu-deuda"
                   className={({ isActive }) => ` ${isActive ? "underline" : "text-blue"} mt-1 text-accent  hover:bg-accent rounded-r-lg transition-colors duration-100 hover:text-white block px-3 py-2 rounded-md text-base font-medium md:mt-0 md:ml-4` }
                 >
                   Elimina tu deuda
-                </NavLink>
+                </NavLink> */}
+                <div
+                  className="cursor-pointer text-blue mt-1 text-accent  hover:bg-accent rounded-r-lg transition-colors duration-100 hover:text-white block px-3 py-2 rounded-md text-base font-medium md:mt-0 md:ml-4"
+                  onClick={() => showPopUp(NOT_AVAILABLE_SECTION_MESSAGE)}
+                >
+                  Elimina tu deuda
+                </div>
               </div>
             </div>
           </div>
           {/* Action Buttons */}
-          <div className="hidden md:flex items-center">
+          {/* <div className="hidden md:flex items-center">
             <Link
               to="/login"
               className="bg-[#f6f0f0] text-accent transition-colors duration-100 px-3 py-2 rounded-full text-sm font-medium"
@@ -89,7 +105,7 @@ export const Navbar = () => {
             >
               Regístrate
             </Link>
-          </div>
+          </div> */}
         </div>
       </nav>
     );

@@ -1,8 +1,14 @@
-import React, { DragEventHandler, useState } from 'react'
+import React, { DragEventHandler, useEffect, useState } from 'react'
+import { IFile } from '../../models';
+import FileUploadService from '../../services/UploadService';
 
 export const IdentityUploadForm = () => {
     // State to store uploaded files of type FileList
     const [files, setFiles] = useState<FileList | []>([]);
+    const [currentFile, setCurrentFile] = useState<File>();
+  const [progress, setProgress] = useState<number>(0);
+  const [message, setMessage] = useState<string>("");
+  const [fileInfos, setFileInfos] = useState<Array<IFile>>([]);
 
   // Handle file selection
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -24,6 +30,46 @@ const handleDraggedFiles = (event: React.DragEvent<HTMLLabelElement>) => {
     setFiles(selectedFiles);
     console.log(selectedFiles);
 }
+
+const selectFile = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const { files } = event.target;
+  const selectedFiles = files as FileList;
+  setCurrentFile(selectedFiles?.[0]);
+  setProgress(0);
+};
+useEffect(() => {
+  // FileUploadService.getFiles().then((response) => {
+  //   setFileInfos(response.data);
+  // });
+}, []);
+
+const upload = () => {
+  setProgress(0);
+  
+  if (!currentFile) return;
+
+  FileUploadService.upload(currentFile, (event: any) => {
+    setProgress(Math.round((100 * event.loaded) / event.total));
+  })
+    .then((response) => {
+      setMessage(response.data.message);
+      return FileUploadService.getFiles();
+    })
+    .then((files) => {
+      setFileInfos(files.data);
+    })
+    .catch((err) => {
+      setProgress(0);
+
+      if (err.response && err.response.data && err.response.data.message) {
+        setMessage(err.response.data.message);
+      } else {
+        setMessage("Could not upload the File!");
+      }
+
+      setCurrentFile(undefined);
+    });
+};
 
   // Optional: Display file names in the UI
   const fileItems = files.length > 0 && (
@@ -55,9 +101,33 @@ const handleDraggedFiles = (event: React.DragEvent<HTMLLabelElement>) => {
                 Drop files to Attach, or <span className="text-blue-600 underline">browse</span>
             </span>
         </span>
-        <input type="file" name="file_upload" className="hidden" onChange={handleFileChange} multiple />
+        <input type="file" name="file_upload" className="hidden" onChange={selectFile} multiple />
     </label>
-    {fileItems}
+    {currentFile && (
+        <div className="progress my-3">
+          <div
+            className="progress-bar progress-bar-info"
+            role="progressbar"
+            aria-valuenow={progress}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            style={{ width: progress + "%" }}
+          >
+            {progress}%
+          </div>
+        </div>
+      )}
+      <div className="card mt-3">
+        <div className="card-header">List of Files</div>
+        <ul className="list-group list-group-flush">
+          {fileInfos &&
+            fileInfos.map((file, index) => (
+              <li className="list-group-item" key={index}>
+                <a href={file.url}>{file.name}</a>
+              </li>
+            ))}
+        </ul>
+      </div>
 </div>
   )
 }

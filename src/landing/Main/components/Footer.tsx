@@ -37,11 +37,11 @@ const enterprise: Array<FooterItem> = [
 ]
 
 interface FooterSectionProps {
-    title: string,
+    title?: string,
     links: Array<FooterItem>
 }
 
-const FooterSection: React.FC<FooterSectionProps> = ({title, links}) => {
+const FooterSection: React.FC<FooterSectionProps> = ({title = "", links}) => {
     return (
         <ul className='flex flex-col gap-2'>
             <li className='font-bold pb-2'>{title}</li>
@@ -67,6 +67,9 @@ const Footer = () => {
             />
             <FooterSection 
                 title='Categorías'
+                links={categories}
+            />
+            <FooterSection 
                 links={categories}
             />
         </div>

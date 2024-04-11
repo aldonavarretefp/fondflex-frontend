@@ -15,7 +15,7 @@ const AppRouter = () => {
 //     const authStatus: string  = 'authenticated';
     const [cookies] = useCookies(['accessToken']);
 
-    var { status:authStatus, checkAuthToken } = useAuthStore();
+    var { status: authStatus, checkAuthToken } = useAuthStore();
     authStatus = 'not-authenticated';
     
     useEffect(() => {
